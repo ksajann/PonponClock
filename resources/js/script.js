@@ -2,8 +2,6 @@
 *  Main function to set the clock times
 */
 (function() {
-    // Init displayed clock
-    initTextClock();
     // Initialise any local time clocks
     initLocalClock();
     // // Start the seconds container moving
@@ -11,33 +9,6 @@
     // // Set the intial minute hand container transition, and then each subsequent step
     setUpMinuteHands();
 })();
-
-function initTextClock() {
-    // Get the local time using JS
-    var timeContainer = document.querySelectorAll(".time");
-
-    var date = new Date();
-    var minutes = date.getMinutes();
-    var hours = date.getHours();
-
-    if (minutes < 10) {
-        minutes = "0" + minutes;
-    }
-
-    for (var i = 0; i < timeContainer.length; i++) {
-        timeContainer[i].innerHTML = `${hours}:${minutes}`;
-    }
-    
-    setInterval(function() {
-        var date = new Date;
-        var minutes = date.getMinutes();
-        var hours = date.getHours();
-
-        for (var i = 0; i < timeContainer.length; i++) {
-            timeContainer[i].innerHTML = `${hours}:${minutes}`;
-        }
-    }, 60000);
-}
 
 /*
 * Starts any clocks using the user's local time
@@ -74,6 +45,17 @@ function initLocalClock() {
                 elements[k].parentNode.setAttribute('data-second-angle', hands[j + 1].angle);
             }
         }
+    }
+
+    // Get the local time using JS
+    var timeContainer = document.querySelectorAll(".time");
+
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+
+    for (var i = 0; i < timeContainer.length; i++) {
+        timeContainer[i].innerHTML = `${hours}:${minutes}`;
     }
 }
 
@@ -122,6 +104,21 @@ function setUpMinuteHands() {
 * Do the first minute's rotation, then move every 60 seconds after
 */
 function moveMinuteHands(containers) {
+    // Get the local time using JS
+    var date = new Date;
+    var minutes = date.getMinutes();
+    var hours = date.getHours();
+    // Get the local time using JS
+    var timeContainer = document.querySelectorAll(".time");
+
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+
+    for (var i = 0; i < timeContainer.length; i++) {
+        timeContainer[i].innerHTML = `${hours}:${minutes}`;
+    }
+    
     for (var i = 0; i < containers.length; i++) {
         containers[i].style.webkitTransform = 'rotateZ(6deg)';
         containers[i].style.transform = 'rotateZ(6deg)';
@@ -137,6 +134,19 @@ function moveMinuteHands(containers) {
         containers[i].style.webkitTransform = 'rotateZ('+ containers[i].angle +'deg)';
         containers[i].style.transform = 'rotateZ('+ containers[i].angle +'deg)';
         }
+        // Get the local time using JS
+        var date = new Date;
+        var minutes = date.getMinutes();
+        var hours = date.getHours();
+        // Get the local time using JS
+        var timeContainer = document.querySelectorAll(".time");
 
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+
+        for (var i = 0; i < timeContainer.length; i++) {
+            timeContainer[i].innerHTML = `${hours}:${minutes}`;
+        }
     }, 60000);
 }  
