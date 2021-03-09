@@ -128,7 +128,8 @@ body {
 }
 
 .clock.simple {
-  background: url(../images/fleur.png) no-repeat center;
+  background: url(../images/clock-celui-qui-voit-ca-est-une-tres-jolie-fleur.png)
+    no-repeat center;
   background-size: 112px;
 }
 

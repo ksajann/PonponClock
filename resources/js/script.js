@@ -47,16 +47,7 @@ function initLocalClock() {
         }
     }
 
-    // Get the local time using JS
-    var timeContainer = document.querySelectorAll(".time");
-
-    if (minutes < 10) {
-        minutes = "0" + minutes;
-    }
-
-    for (var i = 0; i < timeContainer.length; i++) {
-        timeContainer[i].innerHTML = `${hours}:${minutes}`;
-    }
+    updateTextClock();
 }
 
 /*
@@ -100,29 +91,38 @@ function setUpMinuteHands() {
     }
 }
 
-/*
-* Do the first minute's rotation, then move every 60 seconds after
-*/
-function moveMinuteHands(containers) {
+function updateTextClock() {
     // Get the local time using JS
     var date = new Date;
     var minutes = date.getMinutes();
     var hours = date.getHours();
-    // Get the local time using JS
+    
     var timeContainer = document.querySelectorAll(".time");
 
     if (minutes < 10) {
         minutes = "0" + minutes;
     }
 
+    if (hours < 10) {
+        hours = "0" + hours;
+    }
+
     for (var i = 0; i < timeContainer.length; i++) {
         timeContainer[i].innerHTML = `${hours}:${minutes}`;
     }
-    
+}
+
+/*
+* Do the first minute's rotation, then move every 60 seconds after
+*/
+function moveMinuteHands(containers) {
     for (var i = 0; i < containers.length; i++) {
         containers[i].style.webkitTransform = 'rotateZ(6deg)';
         containers[i].style.transform = 'rotateZ(6deg)';
     }
+    
+    updateTextClock();
+
     // Then continue with a 60 second interval
     setInterval(function() {
         for (var i = 0; i < containers.length; i++) {
@@ -134,19 +134,7 @@ function moveMinuteHands(containers) {
         containers[i].style.webkitTransform = 'rotateZ('+ containers[i].angle +'deg)';
         containers[i].style.transform = 'rotateZ('+ containers[i].angle +'deg)';
         }
-        // Get the local time using JS
-        var date = new Date;
-        var minutes = date.getMinutes();
-        var hours = date.getHours();
-        // Get the local time using JS
-        var timeContainer = document.querySelectorAll(".time");
 
-        if (minutes < 10) {
-            minutes = "0" + minutes;
-        }
-
-        for (var i = 0; i < timeContainer.length; i++) {
-            timeContainer[i].innerHTML = `${hours}:${minutes}`;
-        }
+        updateTextClock();
     }, 60000);
 }  
