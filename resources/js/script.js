@@ -16,9 +16,13 @@ function initTextClock() {
     // Get the local time using JS
     var timeContainer = document.querySelectorAll(".time");
 
-    var date = new Date;
+    var date = new Date();
     var minutes = date.getMinutes();
     var hours = date.getHours();
+
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
 
     for (var i = 0; i < timeContainer.length; i++) {
         timeContainer[i].innerHTML = `${hours}:${minutes}`;
