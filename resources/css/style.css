@@ -9,6 +9,11 @@ body {
 
 .clocks {
   float: left;
+  padding: 0;
+  width: 150px;
+  height: 150px;
+  margin: 0;
+  overflow: hidden;
 }
 
 .time {
@@ -24,25 +29,27 @@ body {
 
 .clock {
   border-radius: 50%;
-  background: radial-gradient(#000, #000 0.1em, #fff 0.1em, #fff), #fff;
   display: inline-block;
   margin: 10px;
   padding-bottom: 130px;
   position: relative;
   width: 130px;
+  background: url(../images/clock-celui-qui-voit-ca-est-une-tres-jolie-fleur.png)
+    no-repeat center;
+  background-size: 112px;
 }
 
 .clock::after {
-  background: red;
   border-radius: 50%;
   content: '';
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 4%;
-  height: 4%;
   z-index: 10;
+  background-color: #000;
+  width: 5%;
+  height: 5%;
 }
 
 .minutes-container,
@@ -85,8 +92,8 @@ body {
 }
 
 .hours {
-  background: #000;
-  border: 1px solid #fff;
+  background: #fff;
+  border: 1px solid #000;
   border-radius: 10px;
   position: absolute;
   width: 2.5%;
@@ -97,8 +104,8 @@ body {
 }
 
 .minutes {
-  background: #000;
-  border: 1px solid #fff;
+  background: #fff;
+  border: 1px solid #000;
   border-radius: 10px;
   position: absolute;
   width: 2%;
@@ -111,11 +118,11 @@ body {
 .seconds {
   position: absolute;
   z-index: 8;
-  background-color: #000;
-  border: 1px solid #fff;
+  background-color: #fff;
+  border: 1px solid #000;
   border-radius: 10px;
   height: 45%;
-  left: 49.5%;
+  left: 48.5%;
   top: 14%;
   width: 1%;
   transform-origin: 50% 80%;
@@ -125,18 +132,6 @@ body {
   100% {
     transform: rotateZ(360deg);
   }
-}
-
-.clock.simple {
-  background: url(../images/clock-celui-qui-voit-ca-est-une-tres-jolie-fleur.png)
-    no-repeat center;
-  background-size: 112px;
-}
-
-.clock.simple:after {
-  background-color: #000;
-  width: 5%;
-  height: 5%;
 }
 
 .hours.angled {

@@ -1,13 +1,17 @@
+
+
 /*
 *  Main function to set the clock times
 */
 (function() {
+    // Set the text clock
+    updateTextClock();
     // Initialise any local time clocks
     initLocalClock();
-    // // Start the seconds container moving
+    // Start the seconds container moving
     moveSecondHands();
-    // // Set the intial minute hand container transition, and then each subsequent step
-    setUpMinuteHands();
+    // Set the intial minute hand container transition, and then each subsequent step
+    setUpMinuteHands(); 
 })();
 
 /*
@@ -46,8 +50,6 @@ function initLocalClock() {
             }
         }
     }
-
-    updateTextClock();
 }
 
 /*
